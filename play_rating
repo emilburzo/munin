@@ -16,16 +16,16 @@ EOM
 esac
 
 printf "nexus7sms.value "
-/usr/local/bin/play-rating.py https://play.google.com/store/apps/details?id=com.emilburzo.nexus7sms
+/usr/local/bin/play_rating.py https://play.google.com/store/apps/details?id=com.emilburzo.nexus7sms
 
 printf "graticule.value "
-/usr/local/bin/play-rating.py https://play.google.com/store/apps/details?id=com.emilburzo.graticule
+/usr/local/bin/play_rating.py https://play.google.com/store/apps/details?id=com.emilburzo.graticule
 
 printf "graticulepro.value "
-/usr/local/bin/play-rating.py https://play.google.com/store/apps/details?id=com.emilburzo.graticule.pro
+/usr/local/bin/play_rating.py https://play.google.com/store/apps/details?id=com.emilburzo.graticule.pro
 
 printf "cereteae.value "
-/usr/local/bin/play-rating.py https://play.google.com/store/apps/details?id=com.emilburzo.portabilitate
+/usr/local/bin/play_rating.py https://play.google.com/store/apps/details?id=com.emilburzo.portabilitate
 
 
 
