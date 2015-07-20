@@ -1,0 +1,31 @@
+#!/bin/sh
+
+case $1 in
+   config)
+        cat <<'EOM'
+graph_title Play Store app ratings
+graph_vlabel rating
+graph_category play apps
+nexus7sms.label Nexus 7 SMS
+graticule.label Graticule
+graticulepro.label Graticule PRO
+cereteae.label Ce retea e?
+
+EOM
+        exit 0;;
+esac
+
+printf "nexus7sms.value "
+/usr/local/bin/play-rating.py https://play.google.com/store/apps/details?id=com.emilburzo.nexus7sms
+
+printf "graticule.value "
+/usr/local/bin/play-rating.py https://play.google.com/store/apps/details?id=com.emilburzo.graticule
+
+printf "graticulepro.value "
+/usr/local/bin/play-rating.py https://play.google.com/store/apps/details?id=com.emilburzo.graticule.pro
+
+printf "cereteae.value "
+/usr/local/bin/play-rating.py https://play.google.com/store/apps/details?id=com.emilburzo.portabilitate
+
+
+
