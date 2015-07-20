@@ -1,0 +1,28 @@
+#!/bin/sh
+
+case $1 in
+   config)
+        cat <<'EOM'
+graph_title Ambient temperature
+graph_vlabel temperature (C)
+graph_category ambient
+temp1.warning 30
+temp1.critical 40
+temp1.label Living Room (thermistor)
+temp2.warning 30
+temp2.critical 40
+temp2.label Living Room (DHT22)
+
+EOM
+        exit 0;;
+esac
+
+printf "temp1.value "
+#head -n1 /dev/ttyUSB0 | cut -d "," -f 2
+#grep ^1, /dev/ttyUSB0 | cut -d "," -f 2
+grep 1, /tmp/433mhz | tail -n1 | cut -d "," -f 2
+
+printf "temp2.value "
+#head -n1 /dev/ttyUSB0 | cut -d "," -f 2
+#grep ^2, /dev/ttyUSB0 | cut -d "," -f 2
+grep 2, /tmp/433mhz | tail -n1 | cut -d "," -f 2
