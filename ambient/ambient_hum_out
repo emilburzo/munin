@@ -1,0 +1,25 @@
+#!/bin/sh
+
+export FILE="/opt/ambientlogger/ambientlogger.out"
+
+case $1 in
+   config)
+        cat <<'EOM'
+graph_title Outdoor Humidity
+graph_vlabel humidity (%)
+graph_category ambient
+
+hum4.label Outside
+
+EOM
+        exit 0;;
+esac
+
+# outside N-W
+printf "hum4.value "
+grep ^th,4, $FILE | tail -n1 | cut -d "," -f 4
+
+# outside china station
+#printf "hum99.value "
+#tail -n 50 /tmp/rtl_out | grep "humidity    =" | cut -d " " -f 6 | head -n1
+

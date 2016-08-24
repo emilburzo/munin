@@ -1,0 +1,22 @@
+#!/bin/sh
+
+export FILE="/opt/ambientlogger/ambientlogger.out"
+
+case $1 in
+   config)
+        cat <<'EOM'
+graph_title Outdoor Temperature
+graph_vlabel temperature (C)
+graph_category ambient
+
+temp4.label Outside
+
+EOM
+        exit 0;;
+esac
+
+# outside
+printf "temp4.value "
+grep ^th,4, $FILE | tail -n1 | cut -d "," -f 3
+
+

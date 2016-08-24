@@ -1,0 +1,39 @@
+#!/bin/sh
+
+export FILE="/opt/ambientlogger/ambientlogger.out"
+
+case $1 in
+   config)
+        cat <<'EOM'
+graph_title Indoor Temperature
+graph_vlabel temperature (C)
+graph_category ambient
+
+temp1.label Bedroom
+temp1.warning 30
+temp1.critical 35
+
+temp2.label Living Room
+temp2.warning 30
+temp2.critical 35
+
+temp3.label Kitchen
+temp3.warning 30
+temp3.critical 35
+
+EOM
+        exit 0;;
+esac
+
+# bedroom 1
+printf "temp1.value "
+grep ^th,1, $FILE | tail -n1 | cut -d "," -f 3
+
+# living room
+printf "temp2.value "
+grep ^th,2, $FILE | tail -n1 | cut -d "," -f 3
+
+# kitchen
+printf "temp3.value "
+grep ^th,3, $FILE | tail -n1 | cut -d "," -f 3
+

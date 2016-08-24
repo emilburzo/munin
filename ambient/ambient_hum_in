@@ -1,0 +1,30 @@
+#!/bin/sh
+
+export FILE="/opt/ambientlogger/ambientlogger.out"
+
+case $1 in
+   config)
+        cat <<'EOM'
+graph_title Indoor Humidity
+graph_vlabel humidity (%)
+graph_category ambient
+
+hum1.label Bedroom
+hum2.label Living Room
+hum3.label Kitchen
+
+EOM
+        exit 0;;
+esac
+
+# bedroom 1
+printf "hum1.value "
+grep ^th,1, $FILE | tail -n1 | cut -d "," -f 4
+
+# living room
+printf "hum2.value "
+grep ^th,2, $FILE | tail -n1 | cut -d "," -f 4
+
+# kitchen 
+printf "hum3.value "
+grep ^th,3, $FILE | tail -n1 | cut -d "," -f 4

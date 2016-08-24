@@ -1,0 +1,47 @@
+#!/bin/sh
+
+export FILE="/opt/ambientlogger/ambientlogger.out"
+
+case $1 in
+   config)
+        cat <<'EOM'
+graph_title Ambient modules voltage
+graph_vlabel voltage (mV)
+graph_category ambient
+volt1.label Bedroom
+volt1.warning 3700:
+volt1.critical 3000:
+
+volt2.label Living Room
+volt2.warning 3700:
+volt2.critical 3000:
+
+volt3.label Kitchen
+volt3.warning 3700:
+volt3.critical 3000:
+
+volt4.label Outside
+volt4.warning 3700:
+volt4.critical 3000:
+
+EOM
+        exit 0;;
+esac
+
+# bedroom 1
+printf "volt1.value "
+grep ^th,1, $FILE | tail -n1 | cut -d "," -f 5
+
+# living room
+printf "volt2.value "
+grep ^th,2, $FILE | tail -n1 | cut -d "," -f 5
+
+# kitchen
+printf "volt3.value "
+grep ^th,3, $FILE | tail -n1 | cut -d "," -f 5
+
+# outside
+printf "volt4.value "
+grep ^th,4, $FILE | tail -n1 | cut -d "," -f 5
+
+
